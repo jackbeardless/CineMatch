@@ -1,0 +1,346 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #121212;
+    color: #ffffff;
+    min-height: 100vh;
+    padding: 2rem;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+h1 {
+    text-align: center;
+    color: #ffffff;
+    margin-bottom: 2rem;
+    font-weight: 300;
+    font-size: 2.5rem;
+}
+
+.input-section {
+    position: absolute;
+    left: 50%;
+    top: 120px;
+    transform: translateX(-50%);
+    width: 90%;
+    max-width: 700px;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    background: #1e1e1e;
+    padding: 0.5rem;
+    border-radius: 20px;
+    border: 1px solid #333;
+    transition: all 0.3s ease;
+    z-index: 100;
+}
+
+.input-section:focus-within {
+    border-color: #01b4e4;
+    box-shadow: 0 0 20px rgba(1, 180, 228, 0.1);
+}
+
+textarea {
+    flex-grow: 1;
+    height: 50px;
+    max-height: 150px;
+    padding: 0.8rem;
+    background: transparent;
+    border: none;
+    border-radius: 15px;
+    resize: none;
+    font-size: 1rem;
+    color: #ffffff;
+    transition: all 0.3s ease;
+    line-height: 1.5;
+    scrollbar-width: thin;
+    scrollbar-color: #333 #1e1e1e;
+}
+
+textarea:focus {
+    outline: none;
+}
+
+button {
+    background: #01b4e4;
+    color: white;
+    border: none;
+    border-radius: 15px;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    flex-shrink: 0;
+}
+
+button:hover {
+    background: #0099c9;
+    transform: scale(1.05);
+}
+
+.loading {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(18, 18, 18, 0.9);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    backdrop-filter: blur(5px);
+    transition: all 0.3s ease;
+}
+
+.loading.hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.loading-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.loading-brain {
+    width: 80px;
+    height: 80px;
+    animation: pulse 2s infinite;
+}
+
+.brain-icon {
+    width: 100%;
+    height: 100%;
+    fill: #01b4e4;
+}
+
+.loading-text {
+    color: #fff;
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.loading-dots {
+    display: flex;
+    gap: 2px;
+}
+
+.loading-dots span {
+    animation: dots 1.5s infinite;
+    opacity: 0;
+}
+
+.loading-dots span:nth-child(2) {
+    animation-delay: 0.5s;
+}
+
+.loading-dots span:nth-child(3) {
+    animation-delay: 1s;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        opacity: 0.8;
+    }
+    50% {
+        transform: scale(1.1);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 0.8;
+    }
+}
+
+@keyframes dots {
+    0%, 100% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+}
+
+.recommendations {
+    margin-top: 200px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    padding: 1rem;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.5s ease;
+}
+
+.recommendations.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.movie-card {
+    background: #1e1e1e;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.movie-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+.movie-poster {
+    width: 100%;
+    height: 375px;
+    overflow: hidden;
+}
+
+.movie-poster img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.movie-card:hover .movie-poster img {
+    transform: scale(1.05);
+}
+
+.movie-info {
+    padding: 1.5rem;
+}
+
+.movie-title {
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: #ffffff;
+    margin-bottom: 0.5rem;
+}
+
+.movie-year {
+    color: #888;
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+}
+
+.movie-overview {
+    color: #aaa;
+    font-size: 0.9rem;
+    line-height: 1.4;
+    margin-bottom: 1.5rem;
+}
+
+.tmdb-link {
+    display: inline-block;
+    width: 100%;
+    padding: 0.8rem 1.5rem;
+    background: #01b4e4;
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    text-align: center;
+}
+
+.tmdb-link:hover {
+    background: #0099c9;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(1, 180, 228, 0.3);
+}
+
+.error {
+    color: #ff6b6b;
+    text-align: center;
+    padding: 1rem;
+    background: #1e1e1e;
+    border-radius: 8px;
+}
+
+.send-icon {
+    width: 20px;
+    height: 20px;
+    fill: white;
+}
+
+textarea::-webkit-scrollbar {
+    width: 6px;
+}
+
+textarea::-webkit-scrollbar-track {
+    background: #1e1e1e;
+}
+
+textarea::-webkit-scrollbar-thumb {
+    background-color: #333;
+    border-radius: 3px;
+}
+
+@media (max-width: 768px) {
+    body {
+        padding: 1rem;
+    }
+
+    .container {
+        padding: 1rem;
+    }
+
+    .recommendations {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1rem;
+    }
+
+    .movie-poster {
+        height: 300px;
+    }
+}
+
+.typing-container {
+    text-align: center;
+    margin-bottom: 2rem;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+}
+
+.typing-cursor {
+    width: 3px;
+    height: 40px;
+    background-color: #01b4e4;
+    animation: blink 1s infinite;
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+#typing-text {
+    font-size: 2.5rem;
+    font-weight: 300;
+    color: #ffffff;
+    margin: 0;
+    white-space: nowrap;
+} 
+/*Hello*/

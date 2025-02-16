@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Recommender AI</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="typing-container">
+            <h1 id="typing-text"></h1>
+            <div class="typing-cursor"></div>
+        </div>
+        <div class="input-section">
+            <textarea 
+                id="userPreferences" 
+                placeholder="Tell me what kind of movies you like..."
+                rows="1"
+            ></textarea>
+            <button id="getRecommendations">
+                <svg class="send-icon" viewBox="0 0 24 24">
+                    <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
+                </svg>
+            </button>
+        </div>
+        <div id="loading" class="loading hidden">
+            <div class="loading-container">
+                <div class="loading-brain">
+                    <svg viewBox="0 0 24 24" class="brain-icon">
+                        <path d="M13 3c-4.97 0-9 4.03-9 9H1l3.89 3.89.07.14L9 12H6c0-3.87 3.13-7 7-7s7 3.13 7 7-3.13 7-7 7c-1.93 0-3.68-.79-4.94-2.06l-1.42 1.42C8.27 19.99 10.51 21 13 21c4.97 0 9-4.03 9-9s-4.03-9-9-9zm-1 5v5l4.28 2.54.72-1.21-3.5-2.08V8H12z"/>
+                    </svg>
+                </div>
+                <div class="loading-text">
+                    <span>Thinking</span>
+                    <div class="loading-dots">
+                        <span>.</span>
+                        <span>.</span>
+                        <span>.</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="recommendations" class="recommendations"></div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
+<!--Hello-->
